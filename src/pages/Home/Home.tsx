@@ -57,6 +57,11 @@ export function Home() {
   const [students, setStudents] = useState<CardProps[]>([]);
   const [user, setUser] = useState<GitUsersAPIResponse>({} as GitUsersAPIResponse);
 
+  function resetPlaceholder() {
+    const input: HTMLElement | null = document.getElementById('input_name');
+    input.value = "";
+  }
+
   function addStudent(): void {
     const newStudent: CardProps = {
       name: studentName,
@@ -72,6 +77,7 @@ export function Home() {
       }) 
     };
      setStudents((prevState) => [...prevState, newStudent]);
+     resetPlaceholder();
   }
   
   useEffect(() => {
